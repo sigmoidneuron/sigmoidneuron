@@ -1,0 +1,7 @@
+requests
+pandas
+openai
+transformers
+torch
+datasets
+scikit-learn
