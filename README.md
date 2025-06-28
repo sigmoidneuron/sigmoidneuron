@@ -28,3 +28,37 @@ I'm currently working on Deep learning problems<br>I have experience with object
 [![](https://visitcount.itsvg.in/api?id=sigmoidneuron&icon=9&color=1)](https://visitcount.itsvg.in)
 
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+
+## Sentiment Classifier Project
+
+This repository contains a minimal ETL pipeline and training code for building a sentiment classifier using news data from [newsdata.io](https://newsdata.io) and the OpenAI API.
+
+### Setup
+1. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Export your API keys as environment variables:
+   ```bash
+   export NEWSDATA_API_KEY=your_newsdata_key
+   export OPENAI_API_KEY=your_openai_key
+   ```
+
+### Pipeline
+1. **Fetch data**
+   ```bash
+   python src/data_fetch.py
+   ```
+   This downloads news articles and saves them to `data/raw_news.csv`.
+2. **Annotate sentiment**
+   ```bash
+   python src/annotate.py
+   ```
+   The script labels each article as positive, neutral or negative using the OpenAI API and stores the result in `data/annotated_news.csv`.
+3. **Train the model**
+   ```bash
+   python src/train.py
+   ```
+   This fine-tunes a DistilBERT model on the annotated dataset and saves it under `models/distilbert-sentiment/`.
+
+Make sure you have GPU support and sufficient quota for the OpenAI API before running the full pipeline.
